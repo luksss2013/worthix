@@ -1,0 +1,34 @@
+{
+  "lembrete": [
+    {
+      "id": 1,
+      "prioridade": 2,
+      "titulo": "Angular estudo",
+      "conteudo": "Estudat Angular"
+    },
+    {
+      "id": 2,
+      "prioridade": 2,
+      "titulo": "React Estudo",
+      "conteudo": "Estudar React"
+    },
+    {
+      "id": 3,
+      "prioridade": 3,
+      "titulo": "Java Estudo",
+      "conteudo": "Estudar Java"
+    },
+    {
+      "id": 4,
+      "prioridade": 3,
+      "titulo": "Javascript Estudo",
+      "conteudo": "Estudar Javascript"
+    },
+    {
+      "id": 5,
+      "prioridade": 1,
+      "titulo": "Flutter Estudo",
+      "conteudo": "Estudar Flutter"
+    }
+  ]
+}

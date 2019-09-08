@@ -1,0 +1,67 @@
+<div fxLayout="column" class="offset-table">
+  <div fxLayout="row" fxLayoutAlign="end center" fxFlexOffset="20px">
+    <div fxFlex="50%">
+      <!-- Filtro -->
+      <mat-form-field>
+        <input
+          matInput
+          (keyup)="filtrarConteudo($event.target.value)"
+          placeholder="Conteúdo"
+        />
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="12%">
+      <button mat-raised-button color="primary" (click)="openDialog()">
+        Criar lembrete
+      </button>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex class="mat-elevation-z8">
+      <table mat-table [dataSource]="lembretesDataSource">
+        <!-- Coluna Prioridade -->
+        <ng-container matColumnDef="prioridade">
+          <th mat-header-cell *matHeaderCellDef>Prioridade</th>
+          <td mat-cell *matCellDef="let lembrete">{{ lembrete.prioridade }}</td>
+        </ng-container>
+
+        <!-- Coluna Título -->
+        <ng-container matColumnDef="titulo">
+          <th mat-header-cell *matHeaderCellDef>Título</th>
+          <td mat-cell *matCellDef="let lembrete">{{ lembrete.titulo }}</td>
+        </ng-container>
+
+        <!-- Coluna Conteúdo -->
+        <ng-container matColumnDef="conteudo">
+          <th mat-header-cell *matHeaderCellDef>Conteúdo</th>
+          <td mat-cell *matCellDef="let lembrete">{{ lembrete.conteudo }}</td>
+        </ng-container>
+
+        <!-- Coluna Ação -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let lembrete" class="action-link">
+            <button
+              mat-stroked-button
+              color="primary"
+              (click)="openDialog(lembrete)"
+            >
+              Editar
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let lembrete; columns: displayedColumns"></tr>
+      </table>
+
+      <!-- Paginador -->
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </div>
+</div>

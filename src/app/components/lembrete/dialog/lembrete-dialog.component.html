@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>
+  <div *ngIf="!data.lembrete">Novo Lembrete</div>
+  <div *ngIf="data.lembrete">Editar Lembrete</div>
+
+  <form [formGroup]="formularioLembrete" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Prioridade</mat-label>
+        <mat-select formControlName="prioridade" [disabled]="data.lembrete">
+          <mat-option
+            *ngFor="let prioridade of prioridades"
+            [value]="prioridade.value"
+          >
+            {{ prioridade.descricao }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Título" formControlName="titulo" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea
+          matInput
+          placeholder="Conteúdo"
+          formControlName="conteudo"
+        ></textarea>
+      </mat-form-field>
+      <button mat-stroked-button color="danger" (click)="onNoClick()">
+        Cancelar
+      </button>
+      <button
+        mat-stroked-button
+        color="primary"
+        type="submit"
+        [disabled]="!formularioLembrete.valid"
+      >
+        Salvar
+      </button>
+    </div>
+  </form>
+</h1>
