@@ -18,7 +18,7 @@ import {
 @Component({
   selector: "app-lembrete-dialog",
   templateUrl: "./lembrete-dialog.component.html",
-  styleUrls: ["./lembrete-dialog.scss"]
+  styleUrls: ["./lembrete-dialog.component.scss"]
 })
 export class LembreteDialogComponent implements OnInit {
   formularioLembrete: FormGroup;
