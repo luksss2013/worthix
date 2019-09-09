@@ -44,9 +44,11 @@ export class LembreteComponent implements OnInit {
 
   configurarFiltro() {
     this.lembretesDataSource.filterPredicate = (
-      lembrete: ILembrete,
+      lembretes: ILembrete,
       filter: string
-    ) => lembrete.conteudo.indexOf(filter) != -1;
+    ) => {
+      return lembretes.conteudo.toLocaleLowerCase().indexOf(filter) != -1;
+    };
   }
 
   openDialog(lembrete?): void {
