@@ -12,7 +12,9 @@ export class LembreteService {
 
   //Retorna todos lembretes
   getAll(): Observable<ILembrete[]> {
-    return this.http.get<ILembrete[]>(this.lembreteEndpoint);
+    return this.http.get<ILembrete[]>(
+      `${this.lembreteEndpoint}?_sort=id&_order=desc`
+    );
   }
 
   //Insere um lembrete e retorna

@@ -32,20 +32,25 @@ export class LembreteComponent implements OnInit {
   constructor(public dialog: MatDialog, private store: Store<IAppState>) {}
 
   ngOnInit() {
+    //Configura filtro para filtrar somente por conteúdo
+    this.configurarFiltro();
     this.getAllLembretes();
     this.lembretesDataSource.paginator = this.paginator;
   }
 
   filtrarConteudo(conteudo: string): void {
     this.lembretesDataSource.filter = conteudo.trim().toLocaleLowerCase();
+  }
 
-    if (this.lembretesDataSource.paginator) {
-      this.lembretesDataSource.paginator.firstPage();
-    }
+  configurarFiltro() {
+    this.lembretesDataSource.filterPredicate = (
+      lembrete: ILembrete,
+      filter: string
+    ) => lembrete.conteudo.indexOf(filter) != -1;
   }
 
   openDialog(lembrete?): void {
-    this.dialog.open(LembreteDialogComponent, {
+    const modalLembrete = this.dialog.open(LembreteDialogComponent, {
       width: "250px",
       data: { lembrete }
     });
